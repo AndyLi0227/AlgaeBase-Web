@@ -1,0 +1,41 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Main content -->
+<div class="container" style="padding-top: 1rem;">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-transparent">
+          <div class="row" style="min-height: 15rem;">
+            <div class="col">
+              <img class="badge-circle" src="{{ postclass.author.profile.image.url }}">&nbsp
+              <a>課程名稱: {{ postclass.course_option }}</a>
+              <br>
+              <p><a>
+                  <h3>學校: {{ postclass.author }}</h3>
+                </a></p>
+              <p style="margin-top: 1em;">{{ postclass.content }}</p>
+
+            </div>
+          </div>
+          <p style="margin-top: 1em; font-size: 0.5em;"> 
+            Posted by {{ postclass.author }} on {{ postclass.date_posted|date:"F d, Y, P " }}
+            <br>
+            Last updated by {{ postclass.updated_by }} on {{ postclass.updated_at|date:"F d, Y, P " }}
+          </p>
+          {% if user.is_tutor or user.is_staff %}
+          {% csrf_token %}
+          <div>
+            <a class="btn btn-warning btn-sm" href="{% url 'applyJob' pk=postclass.pk %}">申請</a>
+            <a class="btn btn-danger btn-sm" href="#">關注</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

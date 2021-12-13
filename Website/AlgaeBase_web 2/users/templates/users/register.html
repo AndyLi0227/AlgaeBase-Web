@@ -1,0 +1,22 @@
+{% extends 'login_index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <legend class = "text-center border-bottom mb-5">Join Today</legend>
+            <div class="form-group">
+<pre>
+            <a href="{% url 'tutor_register' %}" class="btn btn-outline-info">我是導師</a>
+    <br>
+            <a href="{% url 'student_register' %}" class="btn btn-outline-info">我是學生</a>
+    <br> 
+        <a href="{% url 'school_register' %}" class="btn btn-outline-info">申請學校專用帳戶</a>
+</pre>
+            </div>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class = "ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}

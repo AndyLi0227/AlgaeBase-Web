@@ -1,0 +1,9 @@
+/bin/
+/lib/
+.vscode
+/users/__pycache__/
+/tut_project/__pycache__/
+pyvenv.cfg
+/Cramatch/__pycache__/
+/users/migrations
+db.sqlite3

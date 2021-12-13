@@ -1,0 +1,11 @@
+{% extends 'login_index.html' %}
+
+{% block content %}
+        <h2>你已經登出了。</h2>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a href="{% url 'login' %}">重新登入</a>
+            </small>
+        </div>
+
+{% endblock %}

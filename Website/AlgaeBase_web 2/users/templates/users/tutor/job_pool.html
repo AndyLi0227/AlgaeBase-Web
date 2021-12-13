@@ -1,0 +1,45 @@
+{% extends 'dash.html' %}
+{% load static %}
+{% block content %}
+<!-- Main content -->
+    <div class="container" style="padding-top: 1rem;">
+      <div class="row">
+        {% if not postclass %}
+          <div class="mx-auto w-200">暫時未有工作可供申請</div>
+        {% endif %}
+          {% for postclassNo in postclass %}
+            <div class="col-xl-4">
+              <div class="card">
+                <div class="card-header bg-transparent">
+                  <div class="row" style="height: 15rem;">
+                    <div class="col">
+                      <img class="badge-circle" src="{{ postclassNo.author.profile.image.url }}">&nbsp
+                      <a href="{% url 'Job' postclassNo.id %}" %}>課程名稱: {{ postclassNo.course_option }}</a>
+                      <br>
+                      <p><a>
+                          <h3>學校: {{ postclassNo.author }}</h3>
+                        </a></p>
+                      <p style="margin-top: 1em;">{{ postclassNo.content|truncatewords:30 }}</p>
+
+                    </div>
+                  </div>
+                  <div>
+                    {% if postclassNo.status == 1 %}
+                    <span class="badge badge-success">Open</span>
+                    {% elif postclassNo.status == 2 %}
+                    <span class="badge badge-secondary">Close</span>
+                    {% elif postclassNo.status == 3 %}
+                    <span class="badge badge-warning">Waiting Approval</span>
+                    {% elif postclassNo.status == 4 %}
+                    <span class="badge btn-warning">Occupied</span>
+                    {% endif %}
+                  </div>
+                  
+                  <p style="margin-top: 1em; font-size: 0.5em;"> Posted by {{ postclassNo.author }} on {{ postclassNo.date_posted|date:"F d, Y, P " }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </div>
+{% endblock %}
