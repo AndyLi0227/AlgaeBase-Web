@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import User, StudentUser, TutorUser, SchoolUser, PostClass, Profile, TimeTableItem#, EduProfile
+from .models import User, StudentUser, TutorUser, SchoolUser, AlgaeUser, PostClass, Profile, TimeTableItem#, EduProfile
 
 
 admin.site.register(User)
 admin.site.register(StudentUser)
 admin.site.register(TutorUser)
 admin.site.register(SchoolUser)
+admin.site.register(AlgaeUser)
 # Register your models here.
 class PostClassAdmin(admin.ModelAdmin):
     list_display = ('author','teacher', 'date_posted', 'status', 

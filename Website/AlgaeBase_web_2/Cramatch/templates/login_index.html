@@ -45,12 +45,35 @@
 				{% endfor %}
 			{% endif %}
 			{% block content %}
-			<div class="text-center">
+			
+			<!--<div class="text-center">
 					<a href="{% url 'login' %}">
 						<span class="login100-form-title p-b-37">登入</span></a>
 					<a href="{% url 'register' %}">
 						<span class="login100-form-title p-b-37">申請帳戶</span></a>
+			</div>-->
+
+			<div class="content-section">
+				<form method="POST">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						<legend class = "border-bottom mb-4">登入</legend>
+						{{ form|crispy }}
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-info" type="submit">Login</button>
+						<small class="text-muted ml-2">
+							<a href="{% url 'password_reset' %}">Forgot Password?</a>
+						</small>
+					</div>
+				</form> 
+				<div class="border-top pt-3">
+					<small class="text-muted">
+						登記新帳戶? <a class = "ml-2" href="{% url 'register' %}">創建</a>
+					</small>
+				</div>
 			</div>
+
 			{% endblock %}
 
 				<div class="text-center p-t-57 p-b-20">

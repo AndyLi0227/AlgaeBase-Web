@@ -38,6 +38,12 @@ class SchoolUser(models.Model):
     #whatsapp_number = models.CharField(max_length=20)
     #email = models.EmailField()
 
+class AlgaeUser(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
+    #phone_number = models.CharField(max_length=20)
+    #whatsapp_number = models.CharField(max_length=20)
+    #email = models.EmailField()    
+
 class Profile(models.Model):
     profile_gender=(
         ('Undefine', '不透露'),('Male', '男性'),('Female', '女性')
